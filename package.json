@@ -1,0 +1,14 @@
+{
+  "name": "process-music",
+  "version": "1.0.0",
+  "description": "",
+  "main": "process-music.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "httpster": "^1.0.3"
+  }
+}
