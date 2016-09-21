@@ -1,4 +1,4 @@
-module.exports = () => {
+module.exports = (playbackRateFactor) => {
   const sourceAudioFileURI = './audio/bowhill-trimmed.wav'
 
   let audioContext = new AudioContext()
@@ -25,7 +25,7 @@ module.exports = () => {
   .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
   .then(audioBuffer => {
     startLoop(audioBuffer, -1, 1)
-    startLoop(audioBuffer, 1, 1.2)
+    startLoop(audioBuffer, 1, playbackRateFactor)
   })
   .catch(error => console.error(error))
 }
