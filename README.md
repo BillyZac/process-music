@@ -20,5 +20,5 @@ $ brew install sox
 
 Trim the first five seconds by doing this:
 ```
-$ sox bowhill.wav bowhill-trimmed.wav trim 0 5
+$ sox audio.wav audio-trimmed.wav trim 0 5
 ```
