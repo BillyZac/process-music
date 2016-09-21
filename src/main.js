@@ -1,4 +1,4 @@
-require('./main.less')
+require('./style/main.less')
 
 const processMusic = require('./processMusic')
 

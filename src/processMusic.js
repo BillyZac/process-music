@@ -1,5 +1,5 @@
 module.exports = () => {
-  const sourceAudioFileURI = 'bowhill-trimmed.wav'
+  const sourceAudioFileURI = './audio/bowhill-trimmed.wav'
 
   let audioContext = new AudioContext()
 

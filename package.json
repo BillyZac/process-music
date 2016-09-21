@@ -4,8 +4,8 @@
   "description": "",
   "main": "process-music.js",
   "scripts": {
-    "start": "httpster",
-    "build": "webpack"
+    "start": "cd dist && httpster",
+    "build": "webpack --watch"
   },
   "author": "",
   "license": "ISC",
@@ -14,11 +14,9 @@
     "babel-loader": "^6.2.5",
     "babel-preset-es2015": "^6.14.0",
     "css-loader": "^0.23.1",
-    "html-webpack-plugin": "^2.22.0",
     "httpster": "^1.0.3",
     "less": "^2.7.1",
     "less-loader": "^2.2.3",
-    "raw-loader": "^0.5.1",
     "style-loader": "^0.13.1",
     "webpack": "^2.1.0-beta.25"
   }
