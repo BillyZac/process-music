@@ -3,7 +3,6 @@ require('./style/main.less')
 const updateUI = require('./updateUI')
 const processMusic = require('./processMusic')
 
-let playbackRateFactor = 1.1
+const sourceAudioFileURI = './audio/bowhill-trimmed.wav'
 
-updateUI(playbackRateFactor)
-processMusic(playbackRateFactor)
+processMusic(sourceAudioFileURI)

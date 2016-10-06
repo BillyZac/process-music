@@ -1,3 +1,10 @@
-module.exports = playbackRateFactor => {
-  document.body.innerHTML = `<span>Rate: </span> ${playbackRateFactor}`
+module.exports = (rate1, rate2) => {
+  document.body.innerHTML = `
+    <p>
+      <span>Rate 1: </span> ${rate1}
+    </p>
+    <p>
+      <span>Rate 2: </span> ${rate2}
+    </p>
+  `
 }

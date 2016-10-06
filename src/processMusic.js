@@ -1,31 +1,23 @@
-module.exports = (playbackRateFactor) => {
-  const sourceAudioFileURI = './audio/bowhill-trimmed.wav'
+const startLoop = require('./startLoop')
+const updateUI = require('./updateUI')
+const getPlaybackRate = require('./getPlaybackRate')
 
+module.exports = sourceAudioFileURI => {
   let audioContext = new AudioContext()
 
-  const startLoop = (audioBuffer, pan = 0, rate = 1) => {
-    let sourceNode = audioContext.createBufferSource()
-    let pannerNode = audioContext.createStereoPanner()
-
-    sourceNode.buffer = audioBuffer
-    sourceNode.loop = true
-    sourceNode.loopStart = 2
-    sourceNode.loopEnd = 4
-    sourceNode.playbackRate.value = rate
-    pannerNode.pan.value = pan
-
-    sourceNode.connect(pannerNode)
-    sourceNode.connect(audioContext.destination)
-
-    sourceNode.start(0) // How long to wait before beginning, and the offset from which to begin.
-  }
-
   fetch(sourceAudioFileURI)
-  .then(response => response.arrayBuffer())
-  .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
-  .then(audioBuffer => {
-    startLoop(audioBuffer, -1, 1)
-    startLoop(audioBuffer, 1, playbackRateFactor)
-  })
-  .catch(error => console.error(error))
+    .then(response => response.arrayBuffer())
+    .then(arrayBuffer => audioContext.decodeAudioData(arrayBuffer))
+    .then(audioBuffer => {
+      let loop1 = startLoop(audioContext, audioBuffer, -1, 1)
+      let loop2 = startLoop(audioContext, audioBuffer, 1, 1)
+      document.addEventListener('mousemove', event => {
+        const rate1 = getPlaybackRate(event.clientX)
+        const rate2 = getPlaybackRate(event.clientY)
+        loop1.playbackRate.value = rate1
+        loop2.playbackRate.value = rate2
+        updateUI(rate1, rate2)
+      })
+    })
+    .catch(error => console.error(error))
 }
